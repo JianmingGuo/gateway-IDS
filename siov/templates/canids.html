@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>S-IoV</title>
+  <meta name="description" content="">
+<!-- 
+Motor Template
+http://www.templatemo.com/tm-463-motor
+-->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
+  <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/static/css/templatemo-style.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+      </head>
+      <body class="services-page">
+
+        <!-- Preloader -->
+        <div id="loader-wrapper">
+          <div id="loader"></div>
+          <div class="loader-section section-left"></div>
+          <div class="loader-section section-right"></div>
+        </div>
+        <!-- End Preloader -->
+    
+        <section class="templatemo-top-section">
+          <div class="templatemo-header">
+            <img class="templatemo-header-img" src="/static/img/header.png" alt="Header">
+            <h1 class="templatemo-site-name">S-IOV</h1>
+            <div class="mobile-menu-icon">
+              <i class="fa fa-bars"></i>
+            </div>
+            <div class="templatemo-nav-container">
+              <nav class="templatemo-nav">
+                <ul>
+                 <li><a href={% url 'index'%} >Home</a></li>
+                 <li><a href={% url 'gateway'%}>Gateway</a></li>
+                 <li><a href={% url 'canids'%} class="active">CAN_IDS</a></li>
+                 <li><a href={% url 'blog'%}>blog</a></li>
+                 <li><a href={% url 'contact'%}>Contact</a></li>
+               </ul>
+             </nav> 
+           </div>
+         </div>
+         <div class="templatemo-welcome welcome-slider">
+          <div class="container">
+            <div class="row">
+              <div class="flexslider">
+                <ul class="slides">
+                  <li>
+                    <div class="about-slider">
+                      <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                        <img src="/static/img/about/1.jpg" class="img-responsive" alt="Image">
+                      </div>
+                      <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 about-slider-description">
+                        <h2 class="text-uppercase welcome-title">
+                          	<span class="welcome-title-1">Performance</span>
+                      		<span class="welcome-title-2">for the speed</span>
+                        </h2>
+                        <p class="welcome-message">Motor is free Bootstrap v3.3.4 responsive web template provided 
+                by <span class="blue">template</span><span class="green">mo</span>.com website. You can download, 
+                modify and use this for your website projects.
+                
+                Cumdent sociis natoque penatibus et magnis dis parturient montes, sor ind nascetur ridiculus mus. 
+                Lorem ipsum dolor sit amet dipiscing elit dori</p>
+                      </div>              
+                    </div>  
+                  </li>
+                  <li>
+                    <div class="about-slider">
+                      <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                        <img src="/static/img/about/1.jpg" class="img-responsive" alt="Image">
+                      </div>
+                      <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 about-slider-description">
+                        <h2 class="text-uppercase welcome-title">
+                          <span class="welcome-title-1">Find to own</span>
+                          <span class="welcome-title-2">the fast &amp; best</span>
+                        </h2>
+                        <p class="welcome-message">Lorem ipsum dolor sit amet, consectetuer adipiscing elit dori. Aenean commodo ligula eget. Aenean massa. Cumdent sociis natoque penatibus et magnis dis parturient montes, sor ind nascetur ridiculus mus. Lorem ipsum dolor sit amet dipiscing elit dori.</p>
+                      </div>              
+                    </div>  
+                  </li>
+                </ul>
+              </div>                          
+            </div>    
+          </div>
+        </div>
+      </section>
+      
+
+      <div id="ctrl-panal">
+        <p id="panal-p">
+            Please upload the data under normal conditions
+        </p>
+        <form class="panal-form" action="/canids/upload_normal/" method="post" enctype="multipart/form-data">
+            <input id="file-button" type="file" name="upload"/>
+            <input class="radio-button" style="margin-left: 30%;" type="submit" value="Submit normal data "/>
+        </form>
+        <small id="panal-err-info" style="color: red">{{ errinf }}</small>
+    </div>
+
+      <br>
+      <br>
+      <div id="ctrl-panal">
+          <p id="panal-p">
+              Please upload the data to be tested
+          </p>
+          <form class="panal-form" action="/canids/upload_test/" method="post" enctype="multipart/form-data">
+              <input id="file-button" type="file" name="upload"/>
+              <input class="radio-button" style="margin-left: 30%;" type="submit" value="Submit test data "/>
+          </form>
+          <small id="panal-err-info" style="color: red">{{ errinf1 }}</small>
+      </div>
+
+      
+
+      <div style="height:40px;"></div>
+      <div style="width: 20%">
+          <form class="panal-form" style="margin: -33px;" action="/canids/ann/" method="post" >
+              <input class="radio-button" style="margin-left: 238%;" type="submit" value="ANN">
+          </form>
+          <form class="panal-form" style="margin: -33px;" action="/canids/lstm/" method="post">
+            <input class="radio-button" style="margin-left: 238%;" type="submit" value="LSTM"></form>
+          <form class="panal-form" style="margin: -33px;" action="/canids/lstm/" method="post">
+            <input class="radio-button" style="margin-left: 238%;" type="submit" value="Entropy-HTM">
+        </form>
+      </div>
+
+
+
+      <style>
+        #ctrl-panal{
+            padding: 30px;
+            height: 220px;
+            width: 30%;
+            margin: 10px auto;
+            vertical-align: center;
+            background-color: rgba(0,0,0,0.1);
+        }
+        #panal-p{
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+        #file-button{
+            text-align: center;
+            margin: 20px auto;
+            border: groove;
+
+        }
+        #panal-err-info{
+            margin-top: -80px;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        .panal-form{
+            height: 60px;
+            display: block;
+            width: 100%;
+        }
+        .radio-button{
+            margin: 20px;
+            padding: 10px;
+            display: block;
+            height: 40px;
+            width: 40%;
+            border-radius: 20px;
+        }
+    </style>
+
+  <div style="height:120px;"></div>
+
+    <!--Footer content-->
+    <footer class="tm-footer">
+      <div class="container">
+        <div class="row margin-bottom-60">
+          <nav class="col-lg-3 col-md-3 tm-footer-nav tm-footer-div">
+            <h3 class="tm-footer-div-title">Main Menu</h3>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="gallery.html">Directory</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="services.html">Our Services</a></li>
+            </ul>
+          </nav>
+          <div class="col-lg-5 col-md-5 tm-footer-div">
+            <h3 class="tm-footer-div-title">About Us</h3>
+            <p class="margin-top-15">Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.</p>
+            <p class="margin-top-15">Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.</p>
+          </div>
+          <div class="col-lg-4 col-md-4 tm-footer-div">
+            <h3 class="tm-footer-div-title">Get Social</h3>
+            <p>Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante.</p>
+            <div class="tm-social-icons-container">
+              <a href="#" class="tm-social-icon"><i class="fa fa-facebook"></i></a>
+              <a href="#" class="tm-social-icon"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="tm-social-icon"><i class="fa fa-linkedin"></i></a>
+              <a href="#" class="tm-social-icon"><i class="fa fa-youtube"></i></a>
+              <a href="#" class="tm-social-icon"><i class="fa fa-behance"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="row tm-copyright">
+          <p class="col-lg-12 small copyright-text text-center">More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+        </div>
+      </div>
+    </footer> <!-- Footer content-->
+    
+    <!-- JS -->
+    <script type="text/javascript" src="/static/js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
+    <script type="text/javascript" src="/static/js/templatemo-script.js"></script>      <!-- Templatemo Script -->
+    <script defer src="/static/js/jquery.flexslider-min.js"></script><!-- FlexSlider -->
+    <script>
+      $(window).load(function() {
+        $('.flexslider').flexslider({
+          animation: "slide",
+          slideshow: false,
+          prevText: "&#xf104;",
+          nextText: "&#xf105;"
+        });
+
+        // Remove preloader
+        // https://ihatetomatoes.net/create-custom-preloading-screen/
+        $('body').addClass('loaded');
+      });
+    </script>
+  </body>
+  </html>
