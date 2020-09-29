@@ -1,0 +1,22 @@
+<?php
+$q = intval($_GET['q']);
+
+$con = mysqli_connect('39.100.88.210','siov','siov','siov');
+if (!$con) {
+    die('Could not connect: ' . mysqli_error($con));
+}
+
+$sql="SELECT * FROM current_module";
+$result = mysqli_query($con,$sql);
+
+
+//echo "<tr><th style = 'text-align:center'>module</th><th style = 'text-align:center'>time</th><th style = 'text-align:center'>identity</th><tr>";
+while($row = mysqli_fetch_array($result)) {
+    if ($row['identity'] == "abnormal")
+        echo "<tr style='background-color: #f2dede; border:1px solid #708090;'><td style = 'text-align:center'>" . $row['module'] . "</td><td style = 'text-align:center'>" . $row['time'] . "</td></tr>";
+    if ($row['identity'] == "normal")
+        echo "<tr style='background-color: #d9edf7; border:1px solid #708090;'><td style = 'text-align:center'>" . $row['module'] . "</td><td style = 'text-align:center'>" . $row['time'] . "</td></tr>";
+}
+
+mysqli_close($con);
+?>

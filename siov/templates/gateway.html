@@ -14,6 +14,8 @@ http://www.templatemo.com/tm-463-motor
   <link href="/static/css/bootstrap.min.css" rel="stylesheet">
   <link href="/static/css/font-awesome.min.css" rel="stylesheet">
   <link href="/static/css/templatemo-style.css" rel="stylesheet">
+  <script type="text/javascript" src="/static/js/highcharts.js"></script>
+  <!--<script src="/static/js/jquery-3.5.1.js"></script>-->
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,175 +23,631 @@ http://www.templatemo.com/tm-463-motor
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+  <style>
+    table tbody {
+      display: block;
+      overflow-y: scroll;
+      border-radius: 5px 5px;
+    }
 
-      </head>
-      <body>
-        <section class="templatemo-top-section">
-          <div class="templatemo-header">
-            <img class="templatemo-header-img" src="/static/img/header.png" alt="Header">
-            <h1 class="templatemo-site-name">S-IOV</h1>
-            <div class="mobile-menu-icon">
-              <i class="fa fa-bars"></i>
-            </div>
-            <div class="templatemo-nav-container">
-              <nav class="templatemo-nav">
-                <ul>
-                 <li><a href={% url 'index'%} >Home</a></li>
-                 <li><a href={% url 'gateway'%} class="active">Gateway</a></li>
-                 <li><a href={% url 'canids'%}>CAN_IDS</a></li>
-                 <li><a href={% url 'blog'%}>blog</a></li>
-                 <li><a href={% url 'contact'%}>Contact</a></li>
-               </ul>
-             </nav> 
-           </div>
-         </div>
-         <div class="templatemo-welcome">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
-                <img src="/static/img/welcome-img.png" class="img-responsive welcome-img" alt="Welcome">
-              </div>
-              <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
-                <h2 class="text-uppercase">
-                  <span class="welcome-title-1">We love your</span>
-                  <span class="welcome-title-2">satisfaction</span>
-                </h2>
-                <p class="welcome-message">Motor is free Bootstrap v3.3.4 responsive web template provided 
-                by <span class="blue">template</span><span class="green">mo</span>.com website. You can download, 
-                modify and use this for your website projects.</p>
-                <a href="#" class="welcome-read-more">Read More</a>
-              </div>
-            </div>    
-          </div>
+    table thead,
+    table tbody tr {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+      text-align: center;
+    }
+
+    thead th,
+    tbody td {
+      width: 50px;
+    }
+
+    table thead {
+      width: calc(100% - 1em);
+    }
+  </style>
+</head>
+<body>
+  <section class="templatemo-top-section">
+    <div class="templatemo-header">
+      <img class="templatemo-header-img" src="/static/img/header.png" alt="Header">
+      <h1 class="templatemo-site-name">S-IOV</h1>
+      <div class="mobile-menu-icon">
+        <i class="fa fa-bars"></i>
+      </div>
+      <div class="templatemo-nav-container">
+        <nav class="templatemo-nav">
+          <ul>
+            <li><a href={% url 'index'%} >Home</a></li>
+            <li><a href={% url 'gateway'%} class="active">Gateway</a></li>
+            <li><a href={% url 'canids'%}>CAN_IDS</a></li>
+            <li><a href={% url 'blog'%}>blog</a></li>
+            <li><a href={% url 'contact'%}>Contact</a></li>
+          </ul>
+        </nav> 
+      </div>
+    </div>
+    <div class="templatemo-welcome">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
+          <img src="/static/img/welcome-img.png" class="img-responsive welcome-img" alt="Welcome">
         </div>
-      </section>
+        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+          <h2 class="text-uppercase">
+            <span class="welcome-title-1">We love your</span>
+            <span class="welcome-title-2">satisfaction</span>
+          </h2>
+          <p class="welcome-message">Motor is free Bootstrap v3.3.4 responsive web template provided 
+          by <span class="blue">template</span><span class="green">mo</span>.com website. You can download, 
+          modify and use this for your website projects.</p>
+          <a href="#" class="welcome-read-more">Read More</a>
+        </div>
+      </div>    
+    </div>
+  </div>
+  </section>
        
 
-    <!--Main content-->
-    <section class="container margin-bottom-50">
-      <div class="tm-overflow-hidden row">
-        <div class="tm-gallery col-lg-9 col-md-9 col-sm-8 col-xs-12">
-          <h3 class="tm-gallery-title">Toyota (53)</h3>          
-          <div class="tm-item-container">
-            <img src="/static/img/2.jpg" alt="Image">
-            <p class="tm-item-description">pellentesque eu, pretium quissem</p><hr>
-            <div class="tm-item-price-container">
-              <span class="tm-item-price">$ 50,000</span>
-              <a href="#" class="tm-item-link">
-                <span class="tm-item-action">Add to Cart</span>
-                <img src="/static/img/plus.png" class="tm-item-add-icon" alt="Image">
-              </a>
+  <!--Main content-->
+  <section class="container margin-bottom-50">
+    <div class="tm-overflow-hidden row">
+      <div class="tm-gallery col-lg-9 col-md-9 col-sm-8 col-xs-12">
+        <!--net-->
+        <div class="panel panel-primary"  id="netlink">
+          <div class="panel-heading">
+            <h3 class="panel-title">NET</h3>
+          </div>
+          <div class="panel-body">
+            <button type="button" class="btn btn-primary" onclick="Net()">
+                <b>Reload</b>
+            </button>
+            <div class="table-head" style="margin-top: 10px">
+              <table align="center" style="border:1px solid #000000;" cellpadding="2px">
+                <thead>
+                  <tr>
+                    <th style="text-align: center" width="100px">proto</th>
+                    <th style="text-align: center">local</th>
+                    <th style="text-align: center">remote</th>
+                    <th style="text-align: center">time</th>
+                  </tr>
+                </thead>
+                <tbody id="net" style="border:1px solid #000000; height:300px">
+                </tbody>
+              </table>
             </div>
           </div>
-          <div class="tm-item-container">
-            <img src="/static/img/2.jpg" alt="Image">
-            <p class="tm-item-description">pellentesque eu, pretium quissem</p><hr>
-            <div class="tm-item-price-container">
-              <span class="tm-item-price">$ 34,000</span>
-              <a href="#" class="tm-item-link">
-                <span class="tm-item-action">Add to Cart</span>
-                <img src="/static/img/plus.png" class="tm-item-add-icon" alt="Image">
-              </a>
-            </div>   
-          </div>
-          <div class="tm-item-container">
-            <img src="/static/img/2.jpg" alt="Image">
-            <p class="tm-item-description">pellentesque eu, pretium quissem</p><hr>
-            <div class="tm-item-price-container">
-              <span class="tm-item-price">$ 65,000</span>
-              <a href="#" class="tm-item-link">
-                <span class="tm-item-action">Add to Cart</span>
-                <img src="/static/img/plus.png" class="tm-item-add-icon" alt="Image">
-              </a>
-            </div>         
-          </div>
-          
         </div>
-        <aside class="tm-gallery-aside col-lg-3 col-md-3 col-sm-4 col-xs-12">
-          <nav class="tm-gallery-nav">
-            <h2 class="tm-gallery-nav-title">Category <i class="fa fa-caret-up"></i></h2>
-            <ul>
-              <li class="active">
-                <a href="#">
-                  <img src="/static/img/gallery-list-icon.png" class="tm-gallery-list-img" alt="Image">Running Process
-                  <i class="fa fa-caret-right tm-gallery-list-fa"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/static/img/gallery-list-icon.png" class="tm-gallery-list-img" alt="Image">Open Port
-                  <i class="fa fa-caret-right tm-gallery-list-fa"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img src="/static/img/gallery-list-icon.png" class="tm-gallery-list-img" alt="Image">Network Connection
-                  <i class="fa fa-caret-right tm-gallery-list-fa"></i>
-                </a>
-              </li>
-              
-              <li>
-                <a href="#">
-                  <img src="/static/img/gallery-list-icon.png" class="tm-gallery-list-img" alt="Image">More...
-                  <i class="fa fa-caret-right tm-gallery-list-fa"></i>
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div class="tm-call-us">
-            <h3 class="text-uppercase tm-call-us-title">Call us</h3>
-            <a href="tel:" class="tm-call-us-link">+11 565 789 57</a>
-          </div>    
-        </aside>
+        <!--cpu-->
+        <div class="panel panel-primary" style="margin-top: 100px" id="cpulink">
+          <div class="panel-heading">
+            <h3 class="panel-title">CPU</h3>
+          </div>
+          <div class="panel-body">
+            <div id="cpu_graph"></div>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <div id="warn"></div>
+            </li>
+            <li class="list-group-item">
+              <div id="avgWarn"></div>
+            </li>
+          </ul>
+        </div>
+        <!--disk-->
+        <div class="panel panel-primary" style="margin-top: 100px" id="disklink">
+          <div class="panel-heading">
+            <h3 class="panel-title">DISK</h3>
+          </div>
+          <div class="panel-body">
+            <button type="button" class="btn btn-primary" onclick="Disk()">
+                <b>Reload</b>
+              </button>
+            <div class="table-head" style="margin-top: 10px">
+              <table align="center" style="border:1px solid #000000;">
+                <thead>
+                  <tr>
+                    <th style="text-align: center">rate</th>
+                    <th style="text-align: center">time</th>
+                  </tr>
+                </thead>
+                <tbody id="disk" style="border:1px solid #000000; height: 100px">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!--mem-->
+        <div class="panel panel-primary" style="margin-top: 100px" id="memlink">
+          <div class="panel-heading">
+            <h3 class="panel-title">MEMORY</h3>
+          </div>
+          <div class="panel-body">
+            <div id="mem_graph"></div>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <div id="mem_warn"></div>
+            </li>
+            <li class="list-group-item">
+              <div id="mem_avgWarn"></div>
+            </li>
+          </ul>
+        </div>
+        <!--module-->
+        <div class="panel panel-primary" style="margin-top: 100px" id="modlink">
+          <div class="panel-heading">
+            <h3 class="panel-title">MODULE</h3>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <button type="button" class="btn btn-primary" onclick="Mod_chg()">
+                <b>Reload</b>
+              </button>
+              <h4 style="text-align: center">Changed modules</h4>
+              <div class="table-head">
+                <table align="center" style="border:1px solid #000000;" cellpadding="2px">
+                  <thead>
+                    <tr>
+                      <th style="text-align: center">status</th>
+                      <th style="text-align: center">module</th>
+                      <th style="text-align: center">time</th>
+                    </tr>
+                  </thead>
+                  <tbody id="mod_chg" style="border:1px solid #000000; height: 100px">
+                  </tbody>
+                </table>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <button type="button" class="btn btn-primary" onclick="Mod_cur()">
+                <b>Reload</b>
+              </button>
+              <h4 style="text-align: center">Current module</h4>
+              <div class="table-head">
+                <table align="center" style="border:1px solid #000000;">
+                  <thead>
+                    <tr>
+                      <th style="text-align: center">module</th>
+                      <th style="text-align: center">time</th>
+                    </tr>
+                  </thead>
+                  <tbody id="mod_cur" style="border:1px solid #000000; height: 320px">
+                  </tbody>
+                </table>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
+      <aside class="tm-gallery-aside col-lg-3 col-md-3 col-sm-4 col-xs-12" style="margin-top: 0px;">
+        <nav class="tm-gallery-nav">
+          <h2 class="tm-gallery-nav-title">Category <i class="fa fa-caret-up"></i></h2>
+          <ul>
+            <li id="clknet">
+              <a href="#netlink" id="netnav">
+                <img src="/static/img/gallery-list-icon.png" class="tm-gallery-list-img" alt="Image">NET
+                <i class="fa fa-caret-right tm-gallery-list-fa"></i>
+              </a>
+            </li>
+            <li id="clkcpu">
+              <a href="#cpulink" id="cpunav">
+                <img src="/static/img/gallery-list-icon.png" class="tm-gallery-list-img" alt="Image">CPU
+                <i class="fa fa-caret-right tm-gallery-list-fa"></i>
+              </a>
+            </li>
+            <li id="clkdisk">
+              <a href="#disklink" id="disknav">
+                <img src="/static/img/gallery-list-icon.png" class="tm-gallery-list-img" alt="Image">DISK
+                <i class="fa fa-caret-right tm-gallery-list-fa"></i>
+              </a>
+            </li>
+            <li id="clkmem">
+              <a href="#memlink" id="memnav">
+                <img src="/static/img/gallery-list-icon.png" class="tm-gallery-list-img" alt="Image">MEMORY
+                <i class="fa fa-caret-right tm-gallery-list-fa"></i>
+              </a>
+            </li>
+            <li id="clkmod">
+              <a href="#modlink" id="modnav">
+                <img src="/static/img/gallery-list-icon.png" class="tm-gallery-list-img" alt="Image">MODULE
+                <i class="fa fa-caret-right tm-gallery-list-fa"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="tm-call-us">
+          <h3 class="text-uppercase tm-call-us-title">Call us</h3>
+          <a href="tel:" class="tm-call-us-link">+11 565 789 57</a>
+        </div>    
+      </aside>
+    </div>
 
-      <!--banner-->
-      <div class="tm-banner">
-        <h2 class="tm-banner-title">Maecenas</h2>
-        <p class="tm-banner-description">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium</p>
-        <a href="#" class="tm-banner-link"><i class="fa fa-play"></i></a>
-      </div>
-    </section> <!-- Main content -->
-    <!--Footer content-->
-    <footer class="tm-footer">
-      <div class="container">
-        <div class="row margin-bottom-60">
-          <nav class="col-lg-3 col-md-3 tm-footer-nav tm-footer-div">
-            <h3 class="tm-footer-div-title">Main Menu</h3>
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">About Us</a></li>
-              <li><a href="gallery.html">Directory</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="services">Our Services</a></li>
-            </ul>
-          </nav>
-          <div class="col-lg-5 col-md-5 tm-footer-div">
-            <h3 class="tm-footer-div-title">About Us</h3>
-            <p class="margin-top-15">Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.</p>
-            <p class="margin-top-15">Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.</p>
-          </div>
-          <div class="col-lg-4 col-md-4 tm-footer-div">
-            <h3 class="tm-footer-div-title">Get Social</h3>
-            <p>Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante.</p>
-            <div class="tm-social-icons-container">
-              <a href="#" class="tm-social-icon"><i class="fa fa-facebook"></i></a>
-              <a href="#" class="tm-social-icon"><i class="fa fa-twitter"></i></a>
-              <a href="#" class="tm-social-icon"><i class="fa fa-linkedin"></i></a>
-              <a href="#" class="tm-social-icon"><i class="fa fa-youtube"></i></a>
-              <a href="#" class="tm-social-icon"><i class="fa fa-behance"></i></a>
-            </div>
+    <!--banner-->
+    <div class="tm-banner">
+      <h2 class="tm-banner-title">Maecenas</h2>
+      <p class="tm-banner-description">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium</p>
+      <a href="#" class="tm-banner-link"><i class="fa fa-play"></i></a>
+    </div>
+  </section> <!-- Main content -->
+  <!--Footer content-->
+  <footer class="tm-footer">
+    <div class="container">
+      <div class="row margin-bottom-60">
+        <nav class="col-lg-3 col-md-3 tm-footer-nav tm-footer-div">
+          <h3 class="tm-footer-div-title">Main Menu</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="gallery.html">Directory</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="services">Our Services</a></li>
+          </ul>
+        </nav>
+        <div class="col-lg-5 col-md-5 tm-footer-div">
+          <h3 class="tm-footer-div-title">About Us</h3>
+          <p class="margin-top-15">Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.</p>
+          <p class="margin-top-15">Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.</p>
+        </div>
+        <div class="col-lg-4 col-md-4 tm-footer-div">
+          <h3 class="tm-footer-div-title">Get Social</h3>
+          <p>Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante.</p>
+          <div class="tm-social-icons-container">
+            <a href="#" class="tm-social-icon"><i class="fa fa-facebook"></i></a>
+            <a href="#" class="tm-social-icon"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="tm-social-icon"><i class="fa fa-linkedin"></i></a>
+            <a href="#" class="tm-social-icon"><i class="fa fa-youtube"></i></a>
+            <a href="#" class="tm-social-icon"><i class="fa fa-behance"></i></a>
           </div>
         </div>
-        <div class="row tm-copyright">
-          <p class="col-lg-12 small copyright-text text-center">code in  <a href="https://github.com/JianmingGuo/gateway-IDS" target="_blank" title="github">github</a> - copyright © 2020</p>
-        </div>
       </div>
-    </footer> <!-- Footer content-->
-    
-    <!-- JS -->
-    <script type="text/javascript" src="/static/js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
-    <script type="text/javascript" src="/static/js/templatemo-script.js"></script>      <!-- Templatemo Script -->
+      <div class="row tm-copyright">
+        <p class="col-lg-12 small copyright-text text-center">code in  <a href="https://github.com/JianmingGuo/gateway-IDS" target="_blank" title="github">github</a> - copyright © 2020</p>
+      </div>
+    </div>
+  </footer> <!-- Footer content-->
+  
+  <!-- JS -->
+  <script type="text/javascript" src="/static/js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
+  <script type="text/javascript" src="/static/js/templatemo-script.js"></script>      <!-- Templatemo Script -->
 
   </body>
-  </html>
+</html>
+
+<!--fluent skip-->
+<script>
+  $(function () {
+    $("#cpunav,#netnav,#disknav,#memnav,#modnav").click(function () {
+      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        var $target = $(this.hash);
+        $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
+        if ($target.length) {
+          var targetOffset = $target.offset().top;
+          $('html,body').animate({ scrollTop: targetOffset }, 400);
+          return false;
+        }
+      }
+    });
+  });
+</script>
+
+<!--net_data-->
+<script>
+  function Net() {
+    $.ajax({
+      type: "GET",
+      url: "/static/php/net.php",
+      success: function (msg) {
+        document.getElementById("net").innerHTML="";
+        $("#net").append(msg);
+      },
+    });
+  }
+  Net();
+  setInterval(Net, 60000);
+</script>
+
+<!--cpu_data-->
+<script>
+    var cpus, cpu, counter = 0;
+    var curWarning = "", avgWarning = "";
+    var total = 0;
+    function refresh() {
+        $.ajax({
+            type: "GET",
+            url: "/static/php/cpu.php",
+            success: function (msg) {
+                cpus = msg.split(',');
+                cpu = Number(cpus[counter]);
+                counter += 1;
+                if (cpus[counter] == "" || counter % 300 == 0) {
+                    var avg = 0;
+                    if (counter <= 300)
+                        avg = total / 298;
+                    else
+                        avg = total / 300;
+
+                    total = 0;
+                    if (avg >= 25) {
+                        $("#avgWarn").html("");
+                        let oldTime = (new Date()).getTime();
+                        let newTime = new Date(oldTime);
+                        //newTime.setSeconds(newTime.getSeconds() + 1);
+                        let rTime = String(newTime).substring(16, 24);
+                        newTime.setMinutes(newTime.getMinutes() - 5);
+                        let lTime = String(newTime).substring(16, 24);
+
+                        avgWarning += "<b style='color:red'>CPU  average rate over high, time:";
+                        avgWarning += lTime + " ~ " + rTime + "</b>";
+                        $("#avgWarn").append(avgWarning);
+                        avgWarning = "";
+                    }
+                    if (counter == 36000)
+                        counter = 0;
+                }
+                if (cpu >= 31) {
+                    $("#warn").html("");
+                    let oldTime = (new Date()).getTime();
+                    let newTime = new Date(oldTime);
+                    //newTime.setSeconds(newTime.getSeconds() + 1);
+                    let time = String(newTime).substring(16, 24);
+                    curWarning += "<b style='color:red'>CPU rate over high, time:" + time + "</b>";
+                    $("#warn").append(curWarning);
+                    curWarning = "";
+                }
+                total += cpu;
+            },
+        });
+    }
+    setInterval(refresh, 1000);
+    Highcharts.chart('cpu_graph', {
+        chart: {
+            type: 'spline',
+            animation: Highcharts.svg,
+            marginRight: 10,
+            events: {
+                load: function () {
+                    var series = this.series[0];
+                    setInterval(function () {
+                        var x = (new Date()).getTime(),
+                            y = cpu;
+                        series.addPoint([x, y], true, true);
+                    }, 1000);
+                }
+            }
+        },
+        time: {
+            useUTC: false
+        },
+        title: {
+            text: 'CPU rate'
+        },
+        accessibility: {
+            announceNewData: {
+                enabled: true,
+                minAnnounceInterval: 15000,
+                announcementFormatter: function (allSeries, newSeries, newPoint) {
+                    if (newPoint) {
+                        return 'New point added. Value: ' + newPoint.y;
+                    }
+                    return false;
+                }
+            }
+        },
+        xAxis: {
+            type: 'datetime',
+            tickPixelInterval: 150
+        },
+        yAxis: {
+            title: {
+                text: 'Value'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            headerFormat: '<b>{series.name}</b><br/>',
+            pointFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}'
+        },
+        legend: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        series: [{
+            name: 'CPU rate',
+            data: (function () {
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+                    });
+                }
+                return data;
+            }())
+        }]
+    });
+</script>
+
+<!--disk_data-->
+<script>
+  function Disk() {
+    $.ajax({
+      type: "GET",
+      url: "/static/php/disk.php",
+      success: function (msg) {
+        document.getElementById("disk").innerHTML="";
+        console.log(msg);
+        $("#disk").append(msg);
+      },
+    });
+  }
+  Disk();
+  setInterval(Disk, 60000);
+</script>
+
+<!--mem_data-->
+<script>
+  var mems, mem, counter = 0;
+  var curWarning = "", avgWarning = "";
+  var total = 0;
+  function refresh() {
+    $.ajax({
+      type: "GET",
+      url: "/static/php/mem.php",
+      success: function (msg) {
+        mems = msg.split(',');
+        mem = Number(mems[counter]);
+        counter += 1;
+        if (mems[counter] == "" || counter % 300 == 0) {
+          var avg = 0;
+          if (counter <= 300)
+            avg = total / 298;
+          else
+            avg = total / 300;
+
+          total = 0;
+          if (avg >= 18) {
+            $("#mem_avgWarn").html("");
+            let oldTime = (new Date()).getTime();
+            let newTime = new Date(oldTime);
+            //newTime.setSeconds(newTime.getSeconds() + 1);
+            let rTime = String(newTime).substring(16, 24);
+            newTime.setMinutes(newTime.getMinutes() - 5);
+            let lTime = String(newTime).substring(16, 24);
+
+            avgWarning += "<b style='color:red'>average mem over high, time: ";
+            avgWarning += lTime + " ~ " + rTime + "</b>";
+            $("#mem_avgWarn").append(avgWarning);
+            avgWarning = "";
+          }
+          if (counter == 36000)
+            counter = 0;
+        }
+
+        if (mem >= 19) {
+          $("#mem_warn").html("");
+          let oldTime = (new Date()).getTime();
+          let newTime = new Date(oldTime);
+          //newTime.setSeconds(newTime.getSeconds() + 1);
+          let time = String(newTime).substring(16, 24);
+          curWarning += "<b style='color:red'>mem over high, time: " + time + "</b>";
+          $("#mem_warn").append(curWarning);
+          curWarning = "";
+        }
+        total += mem;
+      },
+    });
+  }
+  setInterval(refresh, 1000);
+  Highcharts.chart('mem_graph', {
+    chart: {
+      type: 'spline',
+      animation: Highcharts.svg,
+      marginRight: 10,
+      events: {
+        load: function () {
+          var series = this.series[0];
+          setInterval(function () {
+            var x = (new Date()).getTime(),
+              y = mem;
+            series.addPoint([x, y], true, true);
+          }, 1000);
+        }
+      }
+    },
+    time: {
+      useUTC: false
+    },
+    title: {
+      text: 'mem rate'
+    },
+    accessibility: {
+      announceNewData: {
+        enabled: true,
+        minAnnounceInterval: 15000,
+        announcementFormatter: function (allSeries, newSeries, newPoint) {
+          if (newPoint) {
+            return 'New point added. Value: ' + newPoint.y;
+          }
+          return false;
+        }
+      }
+    },
+    xAxis: {
+      type: 'datetime',
+      tickPixelInterval: 150
+    },
+    yAxis: {
+      title: {
+        text: 'Value'
+      },
+      plotLines: [{
+        value: 0,
+        width: 1,
+        color: '#808080'
+      }]
+    },
+    tooltip: {
+      headerFormat: '<b>{series.name}</b><br/>',
+      pointFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}'
+    },
+    legend: {
+      enabled: false
+    },
+    exporting: {
+      enabled: false
+    },
+    series: [{
+      name: 'mem rate',
+      data: (function () {
+        var data = [],
+          time = (new Date()).getTime(),
+          i;
+        for (i = -19; i <= 0; i += 1) {
+          data.push({
+            x: time + i * 1000,
+          });
+        }
+        return data;
+      }())
+    }]
+  });
+</script>
+
+<!--mod_data-->
+<script>
+  function Mod_cur(){
+    $.ajax({
+      type: "GET",
+      url: "/static/php/module_cur.php",
+      success: function (msg) {
+        document.getElementById("mod_cur").innerHTML="";
+        $("#mod_cur").append(msg);
+      },
+    });
+  }
+  Mod_cur();
+  setInterval(Mod_cur, 60000);
+
+  function Mod_chg(){
+    $.ajax({
+      type: "GET",
+      url: "/static/php/module_chg.php",
+      success: function (msgc) {
+        document.getElementById("mod_chg").innerHTML="";
+        $("#mod_chg").append(msgc);
+      },
+    });
+  }
+  Mod_chg();
+  setInterval(Mod_chg,60000);
+</script>
