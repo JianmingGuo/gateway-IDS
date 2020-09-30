@@ -41,6 +41,7 @@ http://www.templatemo.com/tm-463-motor
     thead th,
     tbody td {
       width: 50px;
+      word-break: break-all;
     }
 
     table thead {
@@ -221,6 +222,70 @@ http://www.templatemo.com/tm-463-motor
             </li>
           </ul>
         </div>
+        <!--network rates-->
+        <div class="panel panel-primary" style="margin-top: 100px" id="rateslink">
+          <div class="panel-heading">
+            <h3 class="panel-title">RATES</h3>
+          </div>
+          <div class="panel-body">
+            <div id="rates_graph"></div>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <div id="rates_warn"></div>
+            </li>
+          </ul>
+        </div>
+        <!--socket-->
+        <div class="panel panel-primary"  id="socketlink">
+          <div class="panel-heading">
+            <h3 class="panel-title">SOCKET</h3>
+          </div>
+          <div class="panel-body">
+            <button type="button" class="btn btn-primary" onclick="socket()">
+              <b>Reload</b>
+            </button>
+            <div class="table-head" style="margin-top: 10px">
+              <table align="center" style="border:1px solid #000000;" cellpadding="2px">
+                <thead>
+                  <tr>
+                    <th style="text-align: center" width="100px">protocol</th>
+                    <th style="text-align: center">local address</th>
+                    <th style="text-align: center">process id</th>
+                    <th style="text-align: center">process path</th>
+                  </tr>
+                </thead>
+                <tbody id="socket" style="border:1px solid #000000; height:300px">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!--process-->
+        <div class="panel panel-primary"  id="processlink">
+          <div class="panel-heading">
+            <h3 class="panel-title">PROCESS</h3>
+          </div>
+          <div class="panel-body">
+            <button type="button" class="btn btn-primary" onclick="process()">
+              <b>Reload</b>
+            </button>
+            <div class="table-head" style="margin-top: 10px">
+              <table align="center" style="border:1px solid #000000;" cellpadding="2px">
+                <thead>
+                  <tr>
+                    <th style="text-align: center" width="100px">name</th>
+                    <th style="text-align: center">id</th>
+                    <th style="text-align: center">user id</th>
+                    <th style="text-align: center">path</th>
+                  </tr>
+                </thead>
+                <tbody id="process" style="border:1px solid #000000; height:300px">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
       <aside class="tm-gallery-aside col-lg-3 col-md-3 col-sm-4 col-xs-12" style="margin-top: 0px;">
         <nav class="tm-gallery-nav">
@@ -253,6 +318,24 @@ http://www.templatemo.com/tm-463-motor
             <li id="clkmod">
               <a href="#modlink" id="modnav">
                 <img src="static/img/gallery-list-icon.png" class="tm-gallery-list-img" alt="Image">MODULE
+                <i class="fa fa-caret-right tm-gallery-list-fa"></i>
+              </a>
+            </li>
+            <li id="clkrates">
+              <a href="#rateslink" id="ratesnav">
+                <img src="static/img/gallery-list-icon.png" class="tm-gallery-list-img" alt="Image">RATES
+                <i class="fa fa-caret-right tm-gallery-list-fa"></i>
+              </a>
+            </li>
+            <li id="clksocket">
+              <a href="#socketlink" id="socketnav">
+                <img src="static/img/gallery-list-icon.png" class="tm-gallery-list-img" alt="Image">SOCEKT
+                <i class="fa fa-caret-right tm-gallery-list-fa"></i>
+              </a>
+            </li>
+            <li id="clkprocess">
+              <a href="#processlink" id="processnav">
+                <img src="static/img/gallery-list-icon.png" class="tm-gallery-list-img" alt="Image">PROCESS
                 <i class="fa fa-caret-right tm-gallery-list-fa"></i>
               </a>
             </li>
@@ -319,7 +402,7 @@ http://www.templatemo.com/tm-463-motor
 <!--fluent skip-->
 <script>
   $(function () {
-    $("#cpunav,#netnav,#disknav,#memnav,#modnav").click(function () {
+    $("#cpunav,#netnav,#disknav,#memnav,#modnav,#ratesnav,#socketnav,#processnav").click(function () {
       if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
         var $target = $(this.hash);
         $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
@@ -649,4 +732,145 @@ http://www.templatemo.com/tm-463-motor
   }
   Mod_chg();
   setInterval(Mod_chg,60000);
+</script>
+
+<!--rates-->
+<script>
+var DLR,ULR;
+function runEverySec() { 
+    
+    //  
+    $.ajax( {
+       "dataType" : 'text',
+       "type" : "get",
+       "url" : "static/php/rates.php",
+       "success" : function( data ) { 
+          DLR=parseInt(data.split("\t")[0]);        
+          ULR=parseInt(data.split("\t")[1]);
+          console.log(data);
+       }
+    } );
+    if(DLR>80000||ULR>8000)
+    alert("network traffic anomaly");
+}
+setInterval( runEverySec, 1000  ); 
+
+Highcharts.setOptions({
+  global: {
+    useUTC: false
+  }
+});
+function activeLastPointToolip(chart) {
+  var points = chart.series[0].points;
+  chart.tooltip.refresh(points[points.length -1]);
+}
+var chart = Highcharts.chart('rates_graph', {
+  chart: {
+    type: 'spline',
+    marginRight: 10,
+    events: {
+      load: function () {
+        var series1 = this.series[0],
+        series2 = this.series[1],
+          chart = this;
+        activeLastPointToolip(chart);
+        setInterval(function () {
+          var x = (new Date()).getTime(), // 当前时间
+            y = DLR;          // 下载速度
+          series1.addPoint([x, y], false, true);
+          y=ULR;
+          series2.addPoint([x,y],true,true);
+          activeLastPointToolip(chart);
+        }, 1000);
+      }
+    }
+  },
+  title: {
+    text: 'current network rates'
+  },
+  xAxis: {
+    title: {
+      text: 'time(s)'
+    },
+    type: 'datetime',
+    tickPixelInterval: 150
+  },
+  yAxis: {
+    title: {
+      text: 'Rates(bit/s)'
+    },
+  },
+  credits:{
+     enabled: false 
+  },
+  tooltip: {
+    enabled:false
+  },
+  legend: {
+    enabled:true
+  },
+  series: [{
+    name: 'DownLoadRates',
+    data: (function () {
+      // 初始化
+      var data = [],
+        time = (new Date()).getTime(),
+        i;
+      for (i = -19; i <= 0; i += 1) {
+        data.push({
+          x: time + i * 1000
+        });
+      }
+	  
+      return data;
+    }())
+  },
+  {
+    name: 'UploadRates',
+    data: (function () {
+      // 初始化
+      var data = [],
+        time = (new Date()).getTime(),
+        i;
+      for (i = -19; i <= 0; i += 1) {
+        data.push({
+          x: time + i * 1000
+        });
+      }
+      return data;
+    }())
+  }
+  ]
+});
+</script>
+
+<!--socket-->
+<script>
+  function socket(){
+    $.ajax({
+      type: "GET",
+      url: "static/php/socket.php",
+      success: function (msg) {
+        document.getElementById("socket").innerHTML=msg;
+        $("socket").append(msg);
+      },
+    });
+  }
+  socket();
+  setInterval(socket, 60000);
+</script>
+<!--process-->
+<script>
+  function process(){
+    $.ajax({
+      type: "GET",
+      url: "static/php/process.php",
+      success: function (msg) {
+        document.getElementById("process").innerHTML="";
+        $("#process").append(msg);
+      },
+    });
+  }
+  process();
+  setInterval(process, 60000);
 </script>
