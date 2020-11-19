@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import view
-from canids.view import canids_uplaod_normal,canids_uplaod_test,canids_uplaodsuccess1,canids_uplaodsuccess2,ann
+from canids.view import canids_uplaod_normal,canids_uplaod_test,canids_uplaodsuccess1,canids_uplaodsuccess2,GetList
+from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,7 +33,7 @@ urlpatterns = [
     path('canids/uploadsuccess1/',canids_uplaodsuccess1),
     path('canids/uploadsuccess2/',canids_uplaodsuccess2),
 
-    path('canids/ann/',ann),
+    url(r'^GetList$', GetList),
     # path('about.html/',view.about),
     # path('contact.html/',view.contact),
     # path('gallery.html/',view.gallery),
