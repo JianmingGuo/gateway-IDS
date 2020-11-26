@@ -208,8 +208,12 @@ http://www.templatemo.com/tm-463-motor
         <br>
       </div>
       
+      <section class="container margin-bottom-300"> 
 
-      
+      <h2 style="color:black">HTM</h2>
+      <embed src='/static/img/htm.pdf' width="1000" type='application/pdf' height="500" wmode='transparent'/>
+
+      </section>
 
       
 <!-- 
@@ -360,7 +364,7 @@ function GetList() {
               table_data = JSON.parse(data['list']);
           },
           error: function (data) {
-              alert("拉取清单失败！");
+              alert("wrong file format！");
               console.log(data)
           }
       });
