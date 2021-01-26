@@ -236,8 +236,9 @@ body {
 }
 .welcome-img { margin-top: 30px; }
 .welcome-title-1 {
-  color: #b53636;
-  font-size: 36px;
+  /* color: #b53636; */
+  color:white
+  font-size: 50px;
 }
 .welcome-title-2 { font-size: 52px; }
 .welcome-title-1,
@@ -646,7 +647,7 @@ ol.flex-control-nav { display: none; }
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
 }
 .about-container-2 {
   background: white;
@@ -687,6 +688,12 @@ ol.flex-control-nav { display: none; }
 .about-description {
   margin-bottom: 10px;
   text-align: justify;
+}
+.about-description-1 {
+  font-size:20px;
+  margin-bottom: 200px;
+  text-align: center;
+  margin:20px auto;
 }
 .about-link {
   background: #d54a4a;

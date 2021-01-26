@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>S-IoV</title>
+  <link rel="stylesheet" href="/static/layui/css/layui.css">
   <meta name="description" content="">
 <!-- 
 Motor Template
@@ -44,7 +45,7 @@ http://www.templatemo.com/tm-463-motor
               <nav class="templatemo-nav">
                 <ul>
                  <li><a href={% url 'index'%} >Home</a></li>
-                 <li><a href='http://39.100.88.210:8080/gateway.html'>Gateway</a></li>
+                 <li><a href='http://8.131.72.208/gateway.html'>Gateway</a></li>
                  <li><a href={% url 'canids'%} class="active">CAN_IDS</a></li>
                  <li><a href={% url 'blog'%}>blog</a></li>
                  <li><a href={% url 'contact'%}>Contact</a></li>
@@ -60,35 +61,24 @@ http://www.templatemo.com/tm-463-motor
                   <li>
                     <div class="about-slider">
                       <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                        <img src="/static/img/about/1.jpg" class="img-responsive" alt="Image">
+                        <img src="/static/img/about/can.png" height="220" alt="Image">
                       </div>
                       <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 about-slider-description">
                         <h2 class="text-uppercase welcome-title">
-                          	<span class="welcome-title-1">Performance</span>
-                      		<span class="welcome-title-2">for the speed</span>
+                          	<!-- <span class="welcome-title-1" >   &emsp;&emsp;&emsp;&emsp;&emsp;      Performance</span> -->
+                      		<span class="welcome-title-1">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 面向车内CAN网络的入侵检测系统</span>
                         </h2>
-                        <p class="welcome-message">Motor is free Bootstrap v3.3.4 responsive web template provided 
+                        <!-- <p class="welcome-message">Motor is free Bootstrap v3.3.4 responsive web template provided 
                 by <span class="blue">template</span><span class="green">mo</span>.com website. You can download, 
                 modify and use this for your website projects.
                 
                 Cumdent sociis natoque penatibus et magnis dis parturient montes, sor ind nascetur ridiculus mus. 
-                Lorem ipsum dolor sit amet dipiscing elit dori</p>
+                Lorem ipsum dolor sit amet dipiscing elit dori</p> -->
                       </div>              
                     </div>  
                   </li>
                   <li>
-                    <div class="about-slider">
-                      <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                        <img src="/static/img/about/1.jpg" class="img-responsive" alt="Image">
-                      </div>
-                      <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 about-slider-description">
-                        <h2 class="text-uppercase welcome-title">
-                          <span class="welcome-title-1">Find to own</span>
-                          <span class="welcome-title-2">the fast &amp; best</span>
-                        </h2>
-                        <p class="welcome-message">Lorem ipsum dolor sit amet, consectetuer adipiscing elit dori. Aenean commodo ligula eget. Aenean massa. Cumdent sociis natoque penatibus et magnis dis parturient montes, sor ind nascetur ridiculus mus. Lorem ipsum dolor sit amet dipiscing elit dori.</p>
-                      </div>              
-                    </div>  
+                   
                   </li>
                 </ul>
               </div>                          
@@ -98,7 +88,7 @@ http://www.templatemo.com/tm-463-motor
       </section>
       
 
-      <div id="ctrl-panal">
+      <!-- <div id="ctrl-panal">
         <p id="panal-p">
             Please upload the data under normal conditions
         </p>
@@ -107,23 +97,126 @@ http://www.templatemo.com/tm-463-motor
             <input class="radio-button" style="margin-left: 30%;" type="submit" value="Submit normal data "/>
         </form>
         <small id="panal-err-info" style="color: red">{{ errinf }}</small>
-    </div>
+      </div> -->
 
-      <br>
-      <br>
-      <div id="ctrl-panal">
-          <p id="panal-p">
-              Please upload the data to be tested
+      <section class="container margin-bottom-300"> 
+      <div class="about-container">
+        <br>
+        <br>
+        <br>
+
+        <p id="about-description-1"  style="margin-left:35%"> 
+          <br>
+          <br>
+          <br>
+
+          Please upload the data to train the model
+        </p>
+        
+        <br>
+        <br>
+        <br>
+
+        <form class="panel-form" action="/canids/upload_normal/" method="post" enctype="multipart/form-data">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+         
+          <input id="file-button" style="margin-left:-90%;" type="file" name="upload"/>
+        
+
+          <input class="about-link about-link-2" style="margin-left:-80%;" type = "submit" value = "Submit training data"/>
+          
+
+        </form>
+
+        <!-- <div class="about-container-left">
+          <img src="/static/img/about/S-IOV.png" alt="Image" class="img-responsive">
+        </div>  
+        <div class="about-container-right">
+          <h2 class="about-title">Introduction</h2>
+          <p class="about-description">随着汽车智能互联需求的增加，越来越多的汽车厂商逐步推出具有网联功能的汽车。在智能网联环境下，汽车所遭受的攻击面越来越广，所面临的安全威胁也愈为严重。本项目从车企的实际安全需求出发，分析智能网联汽车所面临的安全威胁，分别从车载互联网关、车内CAN网络这两个层次研究针对智能网联汽车的多层次入侵检测模型，并实现相应的入侵检测系统，以检测针对汽车的恶意攻击行为，从而提高智能网联汽车的安全性。</p>
+         <p class="about-description">Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
+          <a href="#" class="about-link">Duised sitDamet</a>
+        </div>
+        
+        </div> -->
+
+      </section>
+
+
+      <section class="container margin-bottom-300"> 
+        <div class="about-container">
+          <br>
+          <br>
+          <br>
+  
+          <p id="about-description-1"  style="margin-left:35%"> 
+            <br>
+            <br>
+            <br>
+  
+            Please upload the data to detect intrusion
           </p>
-          <form class="panal-form" action="/canids/upload_test/" method="post" enctype="multipart/form-data">
-              <input id="file-button" type="file" name="upload"/>
-              <input class="radio-button" style="margin-left: 30%;" type="submit" value="Submit test data "/>
+          
+          <br>
+          <br>
+          <br>
+  
+          <form class="panel-form" action="/canids/upload_test/" method="post" enctype="multipart/form-data">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+           
+            <input id="file-button" style="margin-left:-90%;" type="file" name="upload"/>
+          
+  
+            <input class="about-link about-link-2" style="margin-left:-80%;" type = "submit" value = "Submit test data"/>
+            
+            <br>
+            <br>
+            <div>
+              <small id="panal-err-info" style="color: red">{{ errinf1 }}</small>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <div>
+              <button type="button" class="about-link about-link-2" style="margin-left:-79%;" id="upname" onclick="GetList()">Intrusion Detection</button>
+              </div>
+    
+            
+            
+
           </form>
-          <small id="panal-err-info" style="color: red">{{ errinf1 }}</small>
+         
+          
+        
+         
+
+      </section>
+
+      <div>
+        <table id="demoTreeTb"></table>
+        <br>
+        <br>
       </div>
+      
+      <section class="container margin-bottom-300"> 
+
+      <h2 style="color:black">HTM</h2>
+      <embed src='/static/img/htm.pdf' width="1000" type='application/pdf' height="500" wmode='transparent'/>
+
+      </section>
 
       
-
+<!-- 
       <div style="height:40px;"></div>
       <div style="width: 20%">
           <form class="panal-form" style="margin: -33px;" action="/canids/ann/" method="post" >
@@ -134,7 +227,7 @@ http://www.templatemo.com/tm-463-motor
           <form class="panal-form" style="margin: -33px;" action="/canids/lstm/" method="post">
             <input class="radio-button" style="margin-left: 238%;" type="submit" value="Entropy-HTM">
         </form>
-      </div>
+      </div> -->
 
 
 
@@ -197,8 +290,12 @@ http://www.templatemo.com/tm-463-motor
           </nav>
           <div class="col-lg-5 col-md-5 tm-footer-div">
             <h3 class="tm-footer-div-title">About Us</h3>
-            <p class="margin-top-15">Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.</p>
-            <p class="margin-top-15">Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.</p>
+          <p class="margin-top-15">郭建铭 517021910722 </p>
+          <p class="margin-top-15">鲍佳钟 517021910279</p>
+          <p class="margin-top-15">陈子昂 517021910780</p>
+          <p class="margin-top-15">钟逸凡 517021910272</p>
+          <p class="margin-top-15">刘斌 518021910006</p>
+          <p class="margin-top-15">Directed by 姚立红</p>
           </div>
           <div class="col-lg-4 col-md-4 tm-footer-div">
             <h3 class="tm-footer-div-title">Get Social</h3>
@@ -238,3 +335,69 @@ http://www.templatemo.com/tm-463-motor
     </script>
   </body>
   </html>
+
+<script src= "/static/layui/layui.js"></script>
+<script src="/static/module/jquery.min.js"></script>
+<script>
+function GetList() {
+  layui.config({
+      base: "../static/module/"  // 配置模块所在的目录
+  }).use(['table', 'layer', 'util', 'treeTable'], function () {
+      var $ = layui.jquery;
+      var layer = layui.layer;
+      var util = layui.util;
+      var treeTable = layui.treeTable;
+      var table = layui.table;
+
+      var table_data;
+      var formdata = new FormData();
+      // var tpname = document.getElementById(name).value;
+      // formdata.append("topo", tpname);
+      $.ajax({
+          url: "/GetList",
+          type: "post",
+          data: formdata,
+          async:false,
+          contentType: false,
+          processData: false,
+          success: function (data) {
+              table_data = JSON.parse(data['list']);
+          },
+          error: function (data) {
+              alert("wrong file format！");
+              console.log(data)
+          }
+      });
+
+      var test = table_data;
+      // 渲染表格
+      var renderTable = function () {
+          treeTable.render({
+              size: 'lg', //尺寸
+              treeColIndex: 0, //设置下拉箭头在第几列
+              treeSpid: "0",   //最上级的父级id
+              treeIdName: 'deptId', //id字段的名称(自己的id)
+              treePidName: 'parentId', //pid字段的名称（父亲的id）
+              treeDefaultClose: true, //是否默认折叠
+              treeLinkage: false, //父级展开时是否自动展开所有子级
+              elem: '#demoTreeTb', //表格的id
+              data: table_data,  // 数据
+              tree: {
+                  iconIndex: 0,    // 折叠图标显示在第几列
+                  isPidData: true  // 是否是pid形式数据
+              },
+              page: false,
+              cols: [   //列数和列名可根据需要更改
+                  [
+                      {field: 'model', width: "50%", align: 'center', title: 'model'},
+                      {field: 'possibility', align: "center", title: 'probability of attack'},
+                     
+                  ]
+              ]
+
+          });
+      };
+      renderTable();
+  });
+}
+</script>

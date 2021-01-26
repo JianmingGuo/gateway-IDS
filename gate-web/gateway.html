@@ -60,11 +60,11 @@ http://www.templatemo.com/tm-463-motor
       <div class="templatemo-nav-container">
         <nav class="templatemo-nav">
           <ul>
-            <li><a href={% url 'index'%} >Home</a></li>
-            <li><a href={% url 'gateway'%} class="active">Gateway</a></li>
-            <li><a href={% url 'canids'%}>CAN_IDS</a></li>
-            <li><a href={% url 'blog'%}>blog</a></li>
-            <li><a href={% url 'contact'%}>Contact</a></li>
+            <li><a href='http://39.100.88.210:8820/index.html/' >Home</a></li>
+            <li><a href='http://39.100.88.210:8080/gateway.html' class="active">Gateway</a></li>
+            <li><a href='http://39.100.88.210:8820/canids.html/'>CAN_IDS</a></li>
+            <li><a href='http://39.100.88.210:8820/blog.html/'>blog</a></li>
+            <li><a href='http://39.100.88.210:8820/contact.html/'>Contact</a></li>
           </ul>
         </nav> 
       </div>
@@ -73,23 +73,25 @@ http://www.templatemo.com/tm-463-motor
     <div class="container">
       <div class="row">
         <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
-          <img src="static/img/welcome-img.png" class="img-responsive welcome-img" alt="Welcome">
+          <img src="static/img/stucture.png" height="320"  alt="Welcome">
         </div>
         <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
           <h2 class="text-uppercase">
-            <span class="welcome-title-1">We love your</span>
-            <span class="welcome-title-2">satisfaction</span>
+            <span class="welcome-title-1">车载网络入侵检测与防御技术研究与实现</span>
+            <br>
+            <span class="welcome-title-2"></span>
           </h2>
-          <p class="welcome-message">Motor is free Bootstrap v3.3.4 responsive web template provided 
-          by <span class="blue">template</span><span class="green">mo</span>.com website. You can download, 
-          modify and use this for your website projects.</p>
-          <a href="#" class="welcome-read-more">Read More</a>
+          <p class="welcome-message">通过收集与分析车载网关的行为特征数据，提出入侵检测与防御模型，建立一个入侵检测与防御系统 </p>
+          <p class="welcome-message">基于B/S架构搭建本系统，包括车载网关、中转计算机、服务器数据库、服务器后台和网页前端，为用户提供友好的可视化界面</p>
+          <!-- <a href="#" class="welcome-read-more">Read More</a> -->
         </div>
       </div>    
     </div>
   </div>
   </section>
        
+  <br>
+  <br>
 
   <!--Main content-->
   <section class="container margin-bottom-50">
@@ -119,6 +121,33 @@ http://www.templatemo.com/tm-463-motor
               </table>
             </div>
           </div>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <div class="btn-group" role="group" aria-label="...">
+                <a href="#cpulink" id="cpunav"  class="btn btn-primary" role="button">
+                    CPU <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+                <a href="#disklink" id="disknav"  class="btn btn-primary" role="button">
+                    DISK <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+                <a href="#memlink" id="memnav"  class="btn btn-primary" role="button">
+                    MEMORY <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+                <a href="#modlink" id="modnav"  class="btn btn-primary" role="button">
+                    MODULE <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+                <a href="#rateslink" id="ratesnav"  class="btn btn-primary" role="button">
+                    RATES <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+                <a href="#socketlink" id="socketnav"  class="btn btn-primary" role="button">
+                    SOCKET <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+                <a href="#processlink" id="processnav"  class="btn btn-primary" role="button">
+                    PROCESS <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+              </div>
+            </li>
+          </ul>
         </div>
         <!--cpu-->
         <div class="panel panel-primary" style="margin-top: 100px" id="cpulink">
@@ -134,6 +163,31 @@ http://www.templatemo.com/tm-463-motor
             </li>
             <li class="list-group-item">
               <div id="avgWarn"></div>
+            </li>
+            <li class="list-group-item">
+              <div class="btn-group" role="group" aria-label="...">
+                <a href="#netlink" id="netnav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> NET
+                </a>
+                <a href="#disklink" id="disknav"  class="btn btn-primary" role="button">
+                    DISK <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+                <a href="#memlink" id="memnav"  class="btn btn-primary" role="button">
+                    MEMORY <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+                <a href="#modlink" id="modnav"  class="btn btn-primary" role="button">
+                    MODULE <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+                <a href="#rateslink" id="ratesnav"  class="btn btn-primary" role="button">
+                    RATES <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+                <a href="#socketlink" id="socketnav"  class="btn btn-primary" role="button">
+                    SOCKET <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+                <a href="#processlink" id="processnav"  class="btn btn-primary" role="button">
+                    PROCESS <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+              </div>
             </li>
           </ul>
         </div>
@@ -159,6 +213,33 @@ http://www.templatemo.com/tm-463-motor
               </table>
             </div>
           </div>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <div class="btn-group" role="group" aria-label="...">
+                <a href="#netlink" id="netnav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> NET
+                </a>
+                <a href="#cpulink" id="cpunav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> CPU
+                </a>
+                <a href="#memlink" id="memnav"  class="btn btn-primary" role="button">
+                    MEMORY <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+                <a href="#modlink" id="modnav"  class="btn btn-primary" role="button">
+                    MODULE <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+                <a href="#rateslink" id="ratesnav"  class="btn btn-primary" role="button">
+                    RATES <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+                <a href="#socketlink" id="socketnav"  class="btn btn-primary" role="button">
+                    SOCKET <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+                <a href="#processlink" id="processnav"  class="btn btn-primary" role="button">
+                    PROCESS <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+              </div>
+            </li>
+          </ul>
         </div>
         <!--mem-->
         <div class="panel panel-primary" style="margin-top: 100px" id="memlink">
@@ -174,6 +255,31 @@ http://www.templatemo.com/tm-463-motor
             </li>
             <li class="list-group-item">
               <div id="mem_avgWarn"></div>
+            </li>
+            <li class="list-group-item">
+              <div class="btn-group" role="group" aria-label="...">
+                <a href="#netlink" id="netnav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> NET
+                </a>
+                <a href="#cpulink" id="cpunav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> CPU
+                </a>
+                <a href="#disklink" id="disknav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> DISK 
+                </a>
+                <a href="#modlink" id="modnav"  class="btn btn-primary" role="button">
+                    MODULE <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+                <a href="#rateslink" id="ratesnav"  class="btn btn-primary" role="button">
+                    RATES <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+                <a href="#socketlink" id="socketnav"  class="btn btn-primary" role="button">
+                    SOCKET <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+                <a href="#processlink" id="processnav"  class="btn btn-primary" role="button">
+                    PROCESS <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+              </div>
             </li>
           </ul>
         </div>
@@ -206,7 +312,7 @@ http://www.templatemo.com/tm-463-motor
               <button type="button" class="btn btn-primary" onclick="Mod_cur()">
                 <b>Reload</b>
               </button>
-              <h4 style="text-align: center">Current module</h4>
+              <h4 style="text-align: center">Current modules</h4>
               <div class="table-head">
                 <table align="center" style="border:1px solid #000000;">
                   <thead>
@@ -218,6 +324,31 @@ http://www.templatemo.com/tm-463-motor
                   <tbody id="mod_cur" style="border:1px solid #000000; height: 320px">
                   </tbody>
                 </table>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="btn-group" role="group" aria-label="...">
+                <a href="#netlink" id="netnav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> NET
+                </a>
+                <a href="#cpulink" id="cpunav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> CPU
+                </a>
+                <a href="#disklink" id="disknav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> DISK 
+                </a>
+                <a href="#memlink" id="memnav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> MEMORY 
+                </a> 
+                <a href="#rateslink" id="ratesnav"  class="btn btn-primary" role="button">
+                    RATES <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+                <a href="#socketlink" id="socketnav"  class="btn btn-primary" role="button">
+                    SOCKET <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+                <a href="#processlink" id="processnav"  class="btn btn-primary" role="button">
+                    PROCESS <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
               </div>
             </li>
           </ul>
@@ -233,6 +364,31 @@ http://www.templatemo.com/tm-463-motor
           <ul class="list-group">
             <li class="list-group-item">
               <div id="rates_warn"></div>
+            </li>
+            <li class="list-group-item">
+              <div class="btn-group" role="group" aria-label="...">
+                <a href="#netlink" id="netnav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> NET
+                </a>
+                <a href="#cpulink" id="cpunav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> CPU
+                </a>
+                <a href="#disklink" id="disknav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> DISK 
+                </a>
+                <a href="#memlink" id="memnav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> MEMORY 
+                </a> 
+                <a href="#modlink" id="modnav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> MODULE
+                </a>
+                <a href="#socketlink" id="socketnav"  class="btn btn-primary" role="button">
+                    SOCKET <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+                <a href="#processlink" id="processnav"  class="btn btn-primary" role="button">
+                    PROCESS <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+              </div>
             </li>
           </ul>
         </div>
@@ -260,6 +416,33 @@ http://www.templatemo.com/tm-463-motor
               </table>
             </div>
           </div>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <div class="btn-group" role="group" aria-label="...">
+                <a href="#netlink" id="netnav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> NET
+                </a>
+                <a href="#cpulink" id="cpunav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> CPU
+                </a>
+                <a href="#disklink" id="disknav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> DISK 
+                </a>
+                <a href="#memlink" id="memnav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> MEMORY 
+                </a> 
+                <a href="#modlink" id="modnav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> MODULE
+                </a>
+                <a href="#rateslink" id="ratesnav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> RATES
+                </a>
+                <a href="#processlink" id="processnav"  class="btn btn-primary" role="button">
+                    PROCESS <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                </a>
+              </div>
+            </li>
+          </ul>
         </div>
         <!--process-->
         <div class="panel panel-primary"  id="processlink">
@@ -285,6 +468,33 @@ http://www.templatemo.com/tm-463-motor
               </table>
             </div>
           </div>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <div class="btn-group" role="group" aria-label="...">
+                <a href="#netlink" id="netnav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> NET
+                </a>
+                <a href="#cpulink" id="cpunav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> CPU
+                </a>
+                <a href="#disklink" id="disknav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> DISK 
+                </a>
+                <a href="#memlink" id="memnav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> MEMORY 
+                </a> 
+                <a href="#modlink" id="modnav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> MODULE
+                </a>
+                <a href="#rateslink" id="ratesnav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> RATES
+                </a>
+                <a href="#socketlink" id="socketnav"  class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-backward" aria-hidden="true"></span> SOCKET
+                </a>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
       <aside class="tm-gallery-aside col-lg-3 col-md-3 col-sm-4 col-xs-12" style="margin-top: 0px;">
@@ -341,19 +551,12 @@ http://www.templatemo.com/tm-463-motor
             </li>
           </ul>
         </nav>
-        <div class="tm-call-us">
-          <h3 class="text-uppercase tm-call-us-title">Call us</h3>
-          <a href="tel:" class="tm-call-us-link">+11 565 789 57</a>
-        </div>    
+           
       </aside>
     </div>
 
     <!--banner-->
-    <div class="tm-banner">
-      <h2 class="tm-banner-title">Maecenas</h2>
-      <p class="tm-banner-description">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium</p>
-      <a href="#" class="tm-banner-link"><i class="fa fa-play"></i></a>
-    </div>
+   
   </section> <!-- Main content -->
   <!--Footer content-->
   <footer class="tm-footer">
@@ -371,8 +574,9 @@ http://www.templatemo.com/tm-463-motor
         </nav>
         <div class="col-lg-5 col-md-5 tm-footer-div">
           <h3 class="tm-footer-div-title">About Us</h3>
-          <p class="margin-top-15">Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.</p>
-          <p class="margin-top-15">Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.</p>
+          <p class="margin-top-15">周子涵 518021911123 </p>
+          <p class="margin-top-15">赵硕 518030910187</p>
+          <p class="margin-top-15">Directed by 姚立红</p>
         </div>
         <div class="col-lg-4 col-md-4 tm-footer-div">
           <h3 class="tm-footer-div-title">Get Social</h3>
@@ -401,6 +605,22 @@ http://www.templatemo.com/tm-463-motor
 
 <!--fluent skip-->
 <script>
+  Date.prototype.Format = function (fmt) { // author: meizz
+    var o = {
+        "M+": this.getMonth() + 1, // 月份
+        "d+": this.getDate(), // 日
+        "h+": this.getHours(), // 小时
+        "m+": this.getMinutes(), // 分
+        "s+": this.getSeconds(), // 秒
+        "q+": Math.floor((this.getMonth() + 3) / 3), // 季度
+        "S": this.getMilliseconds() // 毫秒
+    };
+    if (/(y+)/.test(fmt))
+        fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+            return fmt;
+}
   $(function () {
     $("#cpunav,#netnav,#disknav,#memnav,#modnav,#ratesnav,#socketnav,#processnav").click(function () {
       if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -429,7 +649,7 @@ http://www.templatemo.com/tm-463-motor
     });
   }
   Net();
-  setInterval(Net, 60000);
+  setInterval(Net, 10000);
 </script>
 
 <!--cpu_data-->
@@ -462,21 +682,21 @@ http://www.templatemo.com/tm-463-motor
                         newTime.setMinutes(newTime.getMinutes() - 5);
                         let lTime = String(newTime).substring(16, 24);
 
-                        avgWarning += "<b style='color:red'>CPU  average rate over high, time:";
-                        avgWarning += lTime + " ~ " + rTime + "</b>";
+                        avgWarning += "<b style='color:red'>Overhigh average CPU usage rate from ";
+                        avgWarning += lTime + " to " + rTime + "</b>";
                         $("#avgWarn").append(avgWarning);
                         avgWarning = "";
                     }
                     if (counter == 36000)
                         counter = 0;
                 }
-                if (cpu >= 31) {
+                if (cpu >= 46) {
                     $("#warn").html("");
                     let oldTime = (new Date()).getTime();
                     let newTime = new Date(oldTime);
                     //newTime.setSeconds(newTime.getSeconds() + 1);
                     let time = String(newTime).substring(16, 24);
-                    curWarning += "<b style='color:red'>CPU rate over high, time:" + time + "</b>";
+                    curWarning += "<b style='color:red'>Overhigh instant CPU usage rate at " + time + "</b>";
                     $("#warn").append(curWarning);
                     curWarning = "";
                 }
@@ -578,26 +798,26 @@ http://www.templatemo.com/tm-463-motor
 
 <!--mem_data-->
 <script>
-  var mems, mem, counter = 0;
-  var curWarning = "", avgWarning = "";
-  var total = 0;
+  var mems, mem, counterm = 0;
+  var curWarningm = "", avgWarningm = "";
+  var totalm = 0;
   function refresh() {
     $.ajax({
       type: "GET",
       url: "static/php/mem.php",
       success: function (msg) {
         mems = msg.split(',');
-        mem = Number(mems[counter]);
-        counter += 1;
-        if (mems[counter] == "" || counter % 300 == 0) {
-          var avg = 0;
-          if (counter <= 300)
-            avg = total / 298;
+        mem = Number(mems[counterm]);
+        counterm += 1;
+        if (mems[counterm] == "" || counterm % 300 == 0) {
+          var avgm = 0;
+          if (counterm <= 300)
+            avgm = totalm / 298;
           else
-            avg = total / 300;
+            avgm = totalm / 300;
 
-          total = 0;
-          if (avg >= 18) {
+          totalm = 0;
+          if (avgm >= 20) {
             $("#mem_avgWarn").html("");
             let oldTime = (new Date()).getTime();
             let newTime = new Date(oldTime);
@@ -606,26 +826,26 @@ http://www.templatemo.com/tm-463-motor
             newTime.setMinutes(newTime.getMinutes() - 5);
             let lTime = String(newTime).substring(16, 24);
 
-            avgWarning += "<b style='color:red'>average mem over high, time: ";
-            avgWarning += lTime + " ~ " + rTime + "</b><br>";
-            $("#mem_avgWarn").append(avgWarning);
-            avgWarning = "";
+            avgWarningm += "<b style='color:red'>Overhigh average MEMORY usage rate from ";
+            avgWarningm += lTime + " ~ " + rTime + "</b><br>";
+            $("#mem_avgWarn").append(avgWarningm);
+            avgWarningm = "";
           }
-          if (counter == 36000)
-            counter = 0;
+          if (counterm == 36000)
+            counterm = 0;
         }
 
-        if (mem >= 19) {
+        if (mem >= 21) {
           $("#mem_warn").html("");
           let oldTime = (new Date()).getTime();
           let newTime = new Date(oldTime);
           //newTime.setSeconds(newTime.getSeconds() + 1);
           let time = String(newTime).substring(16, 24);
-          curWarning += "<b style='color:red'>mem over high, time: " + time + "</b><br>";
-          $("#mem_warn").append(curWarning);
-          curWarning = "";
+          curWarningm += "<b style='color:red'>Overhigh instant MEMORY usage rate at " + time + "</b><br>";
+          $("#mem_warn").append(curWarningm);
+          curWarningm = "";
         }
-        total += mem;
+        totalm += mem;
       },
     });
   }
@@ -737,6 +957,8 @@ http://www.templatemo.com/tm-463-motor
 <!--rates-->
 <script>
 var DLR,ULR;
+var rateswarning = "";
+var time;
 function runEverySec() { 
     
     //  
@@ -750,8 +972,16 @@ function runEverySec() {
           console.log(data);
        }
     } );
-    if(DLR>80000||ULR>8000)
-    alert("network traffic anomaly");
+    if(DLR>10000||ULR>200000){
+      time = new Date().Format("yyyy-MM-dd hh:mm:ss"); 
+      rateswarning = "<b style='color:red'>Network traffic over high, time: " + time ;
+      if(DLR>10000)
+      rateswarning+="&nbsp;&nbsp;Downloadrate:"+DLR+"BPS";
+      if(ULR>200000)
+      rateswarning+="&nbsp;&nbsp;Uploadrate:"+ULR+"BPS";
+      rateswarning+="</b><br>"
+      $("#rates_warn").append(rateswarning);
+    }
 }
 setInterval( runEverySec, 1000  ); 
 

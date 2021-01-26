@@ -44,7 +44,7 @@ http://www.templatemo.com/tm-463-motor
               <nav class="templatemo-nav">
                 <ul>
                  <li><a href={% url 'index'%} class="active">Home</a></li>
-                 <li><a href='http://39.100.88.210:8080/gateway.html'>Gateway</a></li>
+                 <li><a href='http://8.131.72.208/gateway.html'>Gateway</a></li>
                  <li><a href={% url 'canids'%}>CAN_IDS</a></li>
                  <li><a href={% url 'blog'%}>blog</a></li>
                  <li><a href={% url 'contact'%}>Contact</a></li>
@@ -60,7 +60,7 @@ http://www.templatemo.com/tm-463-motor
                   <li>
                     <div class="about-slider">
                       <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                       <!-- <img src="/static/img/about/1.jpg" class="img-responsive" alt="Image"> -->
+                       <img src="/static/img/about/1.jpg" class="img-responsive" alt="Image">
                       </div>
                       <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 about-slider-description">
                         <h2 class="text-uppercase welcome-title">
@@ -102,7 +102,7 @@ http://www.templatemo.com/tm-463-motor
       <div class="about-container">
       
         <div class="about-container-left">
-          <img src="/static/img/about/2.jpg" alt="Image" class="img-responsive">
+          <img src="/static/img/about/S-IOV.png" alt="Image" class="img-responsive">
         </div>  
         <div class="about-container-right">
           <h2 class="about-title">Introduction</h2>
@@ -116,13 +116,15 @@ http://www.templatemo.com/tm-463-motor
       <div class="about-container-2 margin-bottom-50">
         <div class="about-container-inner">
           <h3 class="about-title-2">Function 1：车载CAN网络入侵检测</h3>
-          <img src="/static/img/about/3.jpg" alt="Image" class="img-responsive margin-bottom-15">
+          <img src="/static/img/about/5.png" alt="Image" class="img-responsive margin-bottom-15">
           <p class="about-description">针对目前应用最广泛的车载网络协议CAN网络，分析可能存在的安全威胁，从报文角度，综合利用多种方法制作入侵检测工具，检测方法包括Entropy-HTM、报文周期性、ID序列分析、CART决策树、卷积神经网络等。</p>
           <a href="#" class="about-link about-link-2">Details</a>
         </div>
         <div class="about-container-inner">
           <h3 class="about-title-2">Function 2：车载互联网关入侵检测</h3>
-          <img src="/static/img/about/4.jpg" alt="Image" class="img-responsive margin-bottom-15">
+          <img src="/static/img/about/6.png" alt="Image" class="img-responsive margin-bottom-15">
+          <br>
+
           <p class="about-description">分析车载互联网关可能存在的安全威胁，进行数据的采集、分析、检测，采集数据包括进程信息、网络连接、资源使用率、网络流量、系统时间、日志信息等。对正常行为进行建模并检测报警异常行为。</p>
           <a href="#" class="about-link about-link-2">Details</a>
         </div>
@@ -130,32 +132,39 @@ http://www.templatemo.com/tm-463-motor
       
       <div class="about-container-2">
         <div class="services-container-inner">
-          <h3 class="about-title-2">Features</h3>
-          <img src="/static/img/services-1.jpg" alt="Image" class="img-responsive margin-bottom-15">
-          <p class="about-description">Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+          <h3 class="about-title-2">高集成度</h3>
+          <!-- <img src="/static/img/services-1.jpg" alt="Image" class="img-responsive margin-bottom-15"> -->
+          <p class="about-description">车载互联网关对外连接互联网络，对内连接车内网络，如CAN,LIN,FlexRay等，而车内CAN网络是目前使用最为广泛的车内通信协议，是一种串行数据通信协议，有较大的安全隐患。本项目
+          从车载互联网关和车内CAN网络两个角度对汽车进行入侵检测，分析方法完备。
+          </p>
+          <br>
           <a href="#" class="about-link about-link-2">Details</a>
         </div>
         <div class="services-container-inner">
-          <h3 class="about-title-2">Three Columns</h3>
-          <img src="/static/img/services-1.jpg" alt="Image" class="img-responsive margin-bottom-15">
-          <p class="about-description">Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+          <h3 class="about-title-2">多层次</h3>
+          <!-- <img src="/static/img/services-1.jpg" alt="Image" class="img-responsive margin-bottom-15"> -->
+          <p class="about-description">面向车内CAN网络设计实现了多层次的入侵检测系统，本项目首先设计了五个基本分类器，分别为转移矩阵、CART决策树、ANN、HTM、LSTM，这些基本分类器
+            除LSTM都是二分类算法，在此基础上通过集成算法WMA综合基本分类器，将基本分类器的结果经过集成运算提升入侵检测结果的准确性并在一定程度上实现多分类。
+          </p>
           <a href="#" class="about-link about-link-2">Details</a>
         </div>
         <div class="services-container-inner">
-          <h3 class="about-title-2">Three Columns</h3>
-          <img src="/static/img/services-1.jpg" alt="Image" class="img-responsive margin-bottom-15">
-          <p class="about-description">Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+          <h3 class="about-title-2">用户友好</h3>
+          <!-- <img src="/static/img/services-1.jpg" alt="Image" class="img-responsive margin-bottom-15"> -->
+          <p class="about-description">本项目基于B/S架构利用Django框架完成设计，前后端分离，复杂的数据处理和分析对用户透明，操作简便。数据的输出调用High Charts等制作图表来展现。
+            相关信息用户可以直观地看到，便于入侵警告。
+          </p>
+          <br>
+
+          <br>
+          <br>
+
           <a href="#" class="about-link about-link-2">Details</a>
         </div>
       </div>
 
 
       <!--banner-->
-      <div class="tm-banner">
-        <h2 class="tm-banner-title">Maecenas</h2>
-        <p class="tm-banner-description">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium</p>
-        <a href="#" class="tm-banner-link"><i class="fa fa-play"></i></a>
-      </div>
       
     </section> <!-- Main content -->
     
@@ -175,8 +184,12 @@ http://www.templatemo.com/tm-463-motor
           </nav>
           <div class="col-lg-5 col-md-5 tm-footer-div">
             <h3 class="tm-footer-div-title">About Us</h3>
-            <p class="margin-top-15">Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.</p>
-            <p class="margin-top-15">Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.</p>
+          <p class="margin-top-15">郭建铭 517021910722 </p>
+          <p class="margin-top-15">鲍佳钟 517021910279</p>
+          <p class="margin-top-15">陈子昂 517021910780</p>
+          <p class="margin-top-15">钟逸凡 517021910272</p>
+          <p class="margin-top-15">刘斌 518021910006</p>
+          <p class="margin-top-15">Directed by 姚立红</p>
           </div>
           <div class="col-lg-4 col-md-4 tm-footer-div">
             <h3 class="tm-footer-div-title">Get Social</h3>
