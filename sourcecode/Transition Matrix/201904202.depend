@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1571560865 source:e:\2019c++\201904202\main.cpp
+	<iostream>
+	<fstream>
+
+1574768663 source:c:\users\unique\desktop\201904202\main.cpp
+	<iostream>
+	<fstream>
+	<cstring>
+
+1574769646 source:c:\users\unique\desktop\tranc\main.cpp
+	<iostream>
+	<fstream>
+	<cstring>
+
+1579655588 source:c:\users\unique\desktop\prp\tranc\main.cpp
+	<iostream>
+	<fstream>
+	<cstring>
+
+1591605015 source:c:\users\unique\desktop\prp\消息序列代码\main.cpp
+	<iostream>
+	<fstream>
+	<cstring>
+
