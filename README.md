@@ -1,6 +1,6 @@
 # Gateway-IDS
 
-## 1、 面向车内CAN网络的入侵检测
+## 1. 面向车内CAN网络的入侵检测
 
 ## siov
 
@@ -8,7 +8,7 @@
 
 - requirements:
     
-    Django-3.0.7
+    Django-3.0.7  
     six-1.15.0
 
 - 在本地8000端口运行(对系统无要求)：
@@ -18,9 +18,69 @@
 
 ![](pic/iov.jpg)
 
+## sourcecode
+针对CAN网络的入侵检测模块算法源代码，我们实现了四种入侵检测算法，ANN,LSTM,CART,HTM。本项目包含了数据的预处理和特征分析的代码以及一些数据示例
+
+### HTM
+
+基于层级实时记忆(HTM)脑皮质学习算法进行入侵检测。
+
+- requirements:
+
+    nupic
+
+- notice:
+
+    - 代码由nupic例程category_prediction修改过来。
+    - 原category本身是一串String列表，而CAN ID也是String，所以替换一下即可。
+    - 原例程以预测为目的，修改模型参数后可以获得异常值。
+    - 因为仅仅对ID流进行异常检测有其局限性，如果要对数据字段也进行检测的话就涉及对数据字段的SDR编码，idEncoder.py和numEncoder.py分别对id和数据进行编码，简单测试后结果并不理想便未深入。不过此项有解决方案，真的对HTM算法感兴趣的话建议去youtube看视频学习，直接改nupic底层代码中关于SDR编码的部分（耗时耗力）。
+    - py文件的结构大致是这样：
+        - idEncoder编码CANid
+        - numEncoder编码数据字段（未完）
+        - mix将idEncoder和numEncoder的结果整合。（实际运用中只涉及idEncoder的结果）
+        - webdata相当于main
+
+### LSTM
+
+基于LSTM的多分类器基于python实现，输入是经过预处理的报文特征序列，输出是该序列中的最后一条报文特征的分类结果。可以区分正常，DoS，Fuzzy和Spoofing攻击。
+
+- requirements
+
+    - keras  
+    - tensorflow  
+    - sklearn
+    - numpy
+    - pandas
+    - matplotlib
+
+- data
+
+    - DoS Attack_dataset.csv
+    - Fuzzy Attack_dataset.csv
+    - Spoofing the drive gear_dataset.csv
+
+- 运行环境：jupyter lab
+
+- code
+
+    - LSTM_multi.ipynb：我前期的一些尝试性工作
+    - LSTM_final.ipynb：最初的完整版本，里面包含了从数据预处理到最终结果的全过程。但此时LSTM时间片长度仍为1，LSTM处理时间序列的优势并没有使用到.
+    - LSTM_日期.ipynb：扩展了时间序列，对提取的特征进行了取舍。1127为最终版本。
+
+运行时会保存预处理中间结果到csv文件。保存了训练得到的模型。结果会展示模型参数评估表（precision，recall，F1-score等）和混淆矩阵。
+
+### ANN
+
+### CART
+
+
+
+## 2. 面向车载互联网关的入侵检测
+
 ## gate-web
 
-针对车载互联网关进行信息采集，利用php程序完成网关相关信息的读取并打印到前端界面。
+针对车载互联网关进行信息采集，利用php程序完成网关相关信息的读取并打印到前端界面。数值型数据用high charts图表展示，文本型数据用图表打印出来。
 
 - 运行(以Ubuntu系统为例)
 
@@ -40,19 +100,11 @@ e) 访问指定端口实现相关功能，本项目为默认端口
 
 ![](pic/gateway-web.jpg)
 
-## sourcecode
-针对CAN网络的入侵检测模块算法源代码，我们实现了四种入侵检测算法，ANN,LSTM,CART,HTM。本项目包含了数据的预处理和特征分析的代码以及一些数据示例
-
-- HTM
-
-- ANN
-
-- CART
-
-- LSTM
 
 ## gateway
-In-vehicle gateway intrusion detection based on ARM.C code and arm cross-compilation files
+车载互联网关数据采集源代码。本项目针对的网关运行的系统是ARM架构下的定制化Linux系统，缺少相关依赖库的支持，故本项目用C代码编写相关信息采集程序，并利用交叉编译生成可执行程序，在实际情况中运行效果良好。
+
+
 
 
 
