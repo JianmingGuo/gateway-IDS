@@ -8,8 +8,18 @@
 
 - requirements:
     
-    Django-3.0.7  
-    six-1.15.0
+    - Django-3.0.7  
+    - six-1.15.0
+    - keras  
+    - tensorflow  
+    - sklearn
+    - numpy
+    - pandas
+    - matplotlib
+    - nupic
+    - tensorflow
+    - sklearn
+
 
 - 在本地8000端口运行(对系统无要求)：
  > python manage.py runserver 127.0.0.1:8000
@@ -72,8 +82,19 @@
 
 ### ANN
 
+本项目也验证了ANN在CAN网络入侵检测这项任务的效果，神经网络分为4层，每个隐层设置了50个神经元。通过加入正则化方法来改进神经网络并调整优化器类型和参数。
+
+该算法基于深度学习框架tensorflow实现
+
+- code
+
+    - pretreatment.py:预处理
+    - ann.py:神经网络实现
+
 ### CART
 
+决策树(CART)是一种有监督的学习模型，可以根据特征属性的测度值从训练样本中得到通用的分类模型，并以树形图的方式直观地表示属性和结果之间的逻辑关系。
+本算法的实现利用sklearn的集成库实现
 
 
 ## 2. 面向车载互联网关的入侵检测
